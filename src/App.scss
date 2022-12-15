@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+$wideWith: '(min-width: 1400px)';
+$smallWith: '(max-width: 565px)';
+
+.loading_container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+body {
+    background-color: black;
+    color: white;
+}
+.container-fluid{
+    padding: 0 30px;
+}
+.navbar {
+   background-color: black;
+    .logo {
+        height: 60px;
+        img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    button {
+        box-shadow: 0px 0px 10px white !important;
+        .m_menu_open{
+            color: white;
+            font-size: 30px;
+
+        }
+    }
+    .nav_link_wrap {
+        margin-left: 50px;
+    }
+    .nav_link {
+        color: white;
+        text-decoration: none;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-right: 40px;
+        display: flex;
+        align-items: center;
+
+        .nav_link_icon {
+            margin-right: 10px;
+        }
+    }
+    form{
+        input{
+            background-color: black;
+            color: white !important;
+            outline: none;
+            box-shadow: 0px 0px 10px white !important;
+            border: none;
+            &:focus{
+                background-color: inherit;
+                outline: none;
+            }
+            &::placeholder{
+                color: white;
+            }
+        }
+        button{
+            border: none;
+        }
+    }
+
+}
+.home_wrap{
+    margin-top: 50px;
+}
+.bn_swiper_wrap{
+    padding: 30px 0;
+    overflow: hidden !important;
+}
+.banner {
+    height: 30vw;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 30px;
+ 
+    background: {
+        position: center center;
+        size: cover;
+    };
+
+    .banner_text {
+        font-family: 'Oswald', sans-serif;
+        width: 100%;
+        margin-left: 50px;
+        position: relative;
+        z-index: 1;
+        padding-bottom: 30px;
+        h1 {
+            font-size: 6vw;
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba($color: black, $alpha: 1.0);
+            letter-spacing: 5px;
+            line-height: 1;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        p {
+            width: 50%;
+            font-size: 1.5vw;
+            font-weight: 400;
+            text-shadow: 0 0 5px rgba($color: black, $alpha: 1.0);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+    }
+}
+.type_swiper_wrap{
+    width: 90%;
+    margin: 50px 0;
+    padding: 20PX 5px !important;
+    .slide_item{
+        background: rgb(19, 19, 19);
+        height: 200px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 5px white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+           width: 80%; 
+        }
+    }
+}
+.movie_slide{
+    .slide_item{
+        height: 230px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+.popularMovies, .topratedMovies, .upcomingMovies{
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    > h2{
+        box-shadow: 0px 0px 7px white !important;;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+    .slide_item{
+        position: relative;
+        z-index: 5;
+        display: flex;
+        align-items: flex-end;
+        border-radius: 5px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.5s;
+        h2{
+            font-family: 'Oswald', 'Noto Sans KR';
+            margin: 0;
+            text-shadow: 0 0 5px black;
+            padding: 0 0 20px 20px;
+        }
+        &:hover{
+           
+            .show_info{
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+        .show_info{
+            transform: translateX(-100px);
+            transition: all 0.5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 95%;
+            height: 100%;
+            background-color: rgba($color: black, $alpha: 0.8);
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .original_title{
+               font-family: 'Oswald', 'Noto Sans KR';
+               font-size: 2.5vw;
+               margin-bottom: 0;
+            }
+            span{
+                display: block;
+            }
+            .release_date{
+                font-weight: 900;
+                font-size: 15px;
+            }
+            .vote_average{
+                font-weight: 600;
+                font-size: 22px;
+            }
+            .overview{
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                line-height: 1.2;
+            }
+            .vote_count{
+                font-weight: 600;
+                font-size: 13px;
+            }
+        }
+    }
+    
+}
+.footer{
+    margin: 100px auto;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 80%;
+    box-shadow: 0px 0px 10px white !important;
+    img{
+        width: 15%;
+    }
+    .text{
+        font-size: 40px;
+        text-align: center;
+        margin: 50px 0;
+        font-weight: 600;
+    }
+    .sub_text{
+        font-size: 30px;
+    }
+}
+   
+@media #{$smallWith} {
+    form{
+        margin-top: 25px;
+    }
+    .home_wrap{
+        margin-top: 20px;
+    }
+    .type_swiper_wrap{
+        margin: 20px 0;
+        .slide_item {
+            height: 100px;
+        }
+    }
+    .banner{
+        height: 50vw;
+        .banner_text {
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 10px;
+            margin-left: 10px;
+            h1{
+                font-size: 45px;
+                width: 90%;
+            }
+            p{
+                display: none;
+            }
+        }
+    }
+    .popularMovies, .topratedMovies, .upcomingMovies{
+        width: 90%;
+        > h2{
+            font-size: 17px;
+        }
+        .slide_item{
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+            border-radius: 5px;
+            h2{
+                font-family: 'Oswald', 'Noto Sans KR';
+                margin: 0;
+                text-shadow: 0 0 5px black;
+                padding: 0 0 10px 5px;
+                font-size: 17px;
+            }
+            .show_info{
+                .original_title{
+                    font-size: 20px;
+                }
+                .vote_average{
+                    font-size: 15px;
+                }
+                .release_date{
+                    font-size: 12px;
+                }
+                .overview{
+                    display: none;
+                }
+            }
+        }
+        
+    }
+    .footer{
+        margin: 50px auto;
+        width: 90%;
+        img{
+            width: 50%;
+        }
+        .text{
+            font-size: 22px;
+            margin: 30px 0;
+        }
+        .sub_text{
+            text-align: center;
+            font-size: 18px;
+            word-wrap: break-word;
+        }
+    }
+}
+ 

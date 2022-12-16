@@ -21,21 +21,24 @@ function getMovies() {
             const popularMovieApi = await api.get(`/movie/popular?api_key=${APIkey}&language=en-US&page=1`)
             const topratedMovieApi = await api.get(`/movie/top_rated?api_key=${APIkey}&language=en-US&page=1`)
             const upcomingMovieApi = await api.get(`/movie/upcoming?api_key=${APIkey}&language=en-US&page=1`)
+            //장르
+            const genreMovieApi = await api.get(`/genre/movie/list?api_key=${APIkey}&language=en-US`)
+            //유튜브 api
 
             // 3개의 api가 다 불러와지고 동시에 호출
             //배열 하나에 3개의 값이 들어 있는 형태
             //let data = Promise.all([popularMovieApi, topratedMovieApi, upcomingMovieApi])
-
             //각각의 객체로 출력된느 형태
-            let [popularMovies, topratedMovies, upcomingMovies] = await Promise.all([popularMovieApi, topratedMovieApi, upcomingMovieApi])
-
+            let [popularMovies, topratedMovies, upcomingMovies, genreList] = await Promise.all([popularMovieApi, topratedMovieApi, upcomingMovieApi, genreMovieApi])
+            console.log(genreList)
             dispatch({
                 type: "GET_MOVIE_SUCCESS",
                 payload: {
                     // 여러 값들 중에 data필드만 보내줌.
                     popularMovies: popularMovies.data,
                     topratedMovies: topratedMovies.data,
-                    upcomingMovies: upcomingMovies.data
+                    upcomingMovies: upcomingMovies.data,
+                    genreList: genreList.data.genres
                 },
             })
         }
@@ -46,7 +49,33 @@ function getMovies() {
         }
     }
 }
-export const movieAction = { getMovies }
+//디테일 갖고오기
+function getMoviesDetail(id) {
+    return async (dispatch) => {
+        try {
+            dispatch({
+                type: "GET_D_MOVIE_REQUST"
+            })
+            const MovieDetailApi = await api.get(`/movie/${id}?api_key=${APIkey}&language=en-US`)
+            const trailerVideoApi = await api.get(`/movie/${id}/videos?api_key=${APIkey}&language=en-US`)
+            let [moviesDetail, trailerVideo] = await Promise.all([MovieDetailApi, trailerVideoApi])
+            dispatch({
+                type: "GET_D_MOVIE_SUCCESS", payload: {
+                    moviesDetail: moviesDetail.data,
+                    trailerVideo: trailerVideo.data
+                }
+            })
+            console.log("www", trailerVideo)
+        }
+        catch {
+            dispatch({
+                type: "GET_D_MOVIE_FAIL"
+            })
+        }
+    }
+}
+
+export const movieAction = { getMovies, getMoviesDetail }
 /*
     API호출하는 방법
     1. fetch / 2. ajax / 3. 

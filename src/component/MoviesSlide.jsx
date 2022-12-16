@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const MoviesSlide = ({ movie }) => {
   const navigate = useNavigate()
 
-  
+
   return (
     <Swiper
       slidesPerView={3}

@@ -16,7 +16,7 @@ const Home = () => {     //리듀서를 모아주는 index.js파일에서 state�
   // 리덕스 미들웨어를 이용(비동기방식)
   useEffect(() => {
     dispatch(movieAction.getMovies())
-  }, [])
+  },)
 
   //로딩중 구현 true = 데이터 도착전(로딩스피너노출)  false = 데이터 도착후or에러났을때(에러메세지)
   if (loading) {

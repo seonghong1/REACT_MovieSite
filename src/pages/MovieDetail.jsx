@@ -17,7 +17,7 @@ console.log(trailerVideo)
   useEffect(() => {
     dispatch(movieAction.getMoviesDetail(id))
     window.scrollTo(0, 0) //firefox는 적용 안됨
-  }, [])
+  },)
 
   if (loading) {
     return (

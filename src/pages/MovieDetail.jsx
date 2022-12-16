@@ -11,13 +11,13 @@ const MovieDetail = () => {
   const { id } = useParams()
   //데이터를 store에서 다시 갖고와줌 (정상출력)
   const { moviesDetail, loading, trailerVideo } = useSelector(state => state.movie)
-console.log(trailerVideo)
+
   //새로고침시 데이터값을 다시 불러오기 위해 (정상출력)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(movieAction.getMoviesDetail(id))
     window.scrollTo(0, 0) //firefox는 적용 안됨
-  },)
+  },[])
 
   if (loading) {
     return (

@@ -5,7 +5,6 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper";
 
 const Banner = ({ movie }) => {
-    console.log(movie)
     //poster_path의 url이 뒷부분만 노출됨, 앞부분은 tmbd에서 찾아야댐
     return (
         <>

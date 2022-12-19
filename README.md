@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# 🎬영화 소개 사이트🎬
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 사용기술
+- Redux
+- Redux-Thunk
+- Router
+- Axios
+- Sass
 
-## Available Scripts
+# 간단한 설명
+#### TMBD에서 제공된 API를 기반으로 제작한 영화 소개 사이트 입니다!
+##### react-router을 사용해 SPA형태로 구성되었습니다. 
+##### axios를 활용해 데이터를 불러왔으며, async, await를 사용해 각각의 api를 비동기적으로 불러왔습니다.
+##### thunk를 활용해 dispatch의 매개변수에 액션객체가 아닌 API를 불러오고 다시 dispatch를 해주는 함수를 넣어
+##### API를 불러오는 과정을 비동기적으로 구현하였습니다. 
+##### 홈화면이 렌더링시 useEffect를 사용해 dispatch(api.get하는 액션함수)가 실행되며 데이터를 불러와줍니다.
+##### Toprated, Upcoming, Popular 3가지 타입의 api를 불러와 슬라이드를 구성하였습니다.
+##### 각 영화를 클릭시 path='/movies/:id'로 이동되며 detail컴포넌트를 불러와줍니다. 클릭시 해당 /:id값에 영화의 id가 들어가며,
+##### useParams를 사용해 해당 아이디 값을 활용할 수 있는 구조로 구현하였습니다.
+##### 해당된 영화의 정보를 불러오기 위해 detail api를 사용해 dispatch로 전달하는 과정에서 액션함수의 매개변수로 id값을 전달해주었습니다.
+##### 디테일 페이지에서 react-youtube를 활용해 영상을 클릭시 유튜브 영상이 보여지게끔 구현하였습니다. video api에
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 느낀점, 알게된점, 나의 생각
+##### redux를 사용해 단순히 store에 값을 저장하고 활용하는 용도가 아닌 thnk와 같이 사용해 비동기적으로 데이터를 불러오는 과정에 있어
+##### 다방면적으로 유용한 기술이라고 생각이 들었다. 처음 thnk 개념과 활용하는거에 있어 어려움을 겪었지만 계속된 복기를 통하여 이해와 스스로 활용
+##### 할 수 있게 되었다. 다른 프로젝트에서도 api를 불러오는 과정에 있어 thnk를 활용해 복습할 예정입니다.
+##### 또한 router의 useParams함수가 detail페이지를 구성하는 과정에 있어 큰 영향을 미쳤다. redux만을 사용해 홈페이지를 구성하였다면 
+##### 지금처럼 가독성있고 효과적으로 구성하기 힘들었을텐데 router을 같이 활용해 시너지를 이끌어내어 여러 라이브러리의 장점을 조합해
+##### 하나의 서비스를 만들 수 있었던 좋은 기회였다.
+##### 또한 그동안 fetch를 주로 사용해 데이터를 불러와 주었지만 이번에는 axios를 사용해 주었다. 

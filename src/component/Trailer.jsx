@@ -19,10 +19,16 @@ const Trailer = ({ img, trailerVideo }) => {
     event.target.pauseVideo();
   }
   // official 영상 보여주기
-  // const official = trailerVideo && trailerVideo.results.find((item) => {
-  //   if (item.name === 'Official Trailer') {
-  //     return item
-  //   }})
+  const official = trailerVideo.results && trailerVideo.results.find((item) => {
+    if (item.name === 'Official Trailer') {
+      return item
+    }
+  })
+  const official2 = trailerVideo.results && trailerVideo.results.find((item) => {
+    if (item.type === 'Trailer') {
+      return item
+    }
+  })
   return (
     <>
       <div
@@ -42,8 +48,8 @@ const Trailer = ({ img, trailerVideo }) => {
       >
         <Modal.Header closeButton>
         </Modal.Header>
-        <Modal.Body>
-          {/* <YouTube videoId={official?.key && trailerVideo.results[0].key} opts={opts} onReady={_onReady} /> */}
+        <Modal.Body>{/*{official?.key && trailerVideo.results[0].key}*/}
+          <YouTube videoId={official?.key ? official?.key:official2?.key} opts={opts} onReady={_onReady} />
         </Modal.Body>
       </Modal>
     </>

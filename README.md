@@ -1,5 +1,5 @@
 # 🎬영화 소개 사이트🎬
-
+https://seonghong-moviesite.netlify.app/
 # 사용기술
 - Redux
 - Redux-Thunk
